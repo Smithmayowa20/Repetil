@@ -7,24 +7,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap Template</title>
+  <title>Repetil Online Learning Companion</title>
   <!-- Images -->
-  <link rel="apple-touch-icon" sizes="60x60" href="icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="icon-180x180.png">
-  <link rel="icon" type="image/png" href="icon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="icon-194x194.png" sizes="194x194">
-  <link rel="icon" type="image/png" href="icon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="icon-192x192.png" sizes="192x192">
-  <link rel="icon" type="image/png" href="icon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" sizes="60x60" href="img/icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="img/icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="img/icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="img/icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icon-180x180.png">
+  <link rel="icon" type="image/png" href="img/icon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="img/icon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="img/icon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="img/icon-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="img/icon-16x16.png" sizes="16x16">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+  <script>
+  function displayText() {
+	document.getElementById("learn_more_text").style.display = "";
+	document.getElementById("learn_more_button").style.display = "none";
+  }
+  </script>
+
+<script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDZLGAWIU8sFCb8xNNRV1HKnITccD7XQEM",
+    authDomain: "repetil-17588.firebaseapp.com",
+    databaseURL: "https://repetil-17588.firebaseio.com",
+    projectId: "repetil-17588",
+    storageBucket: "",
+    messagingSenderId: "877782902647"
+  };
+  firebase.initializeApp(config);
+  var dbRef = firebase.database();
+  var launchRef = dbRef.ref('launchList');
+  
+  function saveData(y = launchRef) {
+	  var name = document.getElementById("form3").value;
+	  var email = document.getElementById("form2").value;
+	  const promise = firebase.auth().signInAnonymously();
+	  promise.catch(e=>{ console.log(e.massage)});
+	  y.push({name:name,email:email,});
+	  document.getElementById("form3").value = "";
+	  document.getElementById("form2").value = "";
+    };
+</script>  
   <style>
   /* Required for full background image */
 
@@ -51,6 +84,14 @@
       height: 650px;
     }
   }
+
+  .s1-txt2 {
+   font-family: Ubuntu-Regular;
+   font-size: 14px;
+   color: #111;
+   line-height: 1.5;
+   padding-top: 10px;
+  }  
 
   .top-nav-collapse {
     background-color: #3f51b5 !important;
@@ -95,7 +136,7 @@
         <a class="navbar-brand" href="#">
           <strong>REPETIL</strong>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
@@ -105,24 +146,24 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Profile</a>
-            </li> -->
+            </li>
           </ul>
-          <!-- <form class="form-inline">
+          <form class="form-inline">
             <div class="md-form my-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
-          </form> -->
-        </div>
+          </form>
+        </div> -->
       </div>
     </nav>
     <!-- Navbar -->
     <!-- Full Page Intro -->
-    <div class="view" style="background-image: url('img/background_4.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="view" style="background-image: url('img/background_5.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
       <!-- Mask & flexbox options-->
       <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
         <!-- Content -->
@@ -130,27 +171,26 @@
           <!--Grid row-->
           <div class="row mt-5">
             <!--Grid column-->
-            <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
-              <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign up right now! </h1>
+            <div class="col-md-6 col-12 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+              <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Are You Tired Of Always Forgetting What You Just Learned Online?</h1>
               <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
-              <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga
-              nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
-              dolor molestiae, quisquam iste, maiores. Nulla.</h6>
-			  <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem repellendus quasi fuga
-              nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
-              dolor molestiae, quisquam iste, maiores. Nulla.</h6>
-              <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Learn more</a>
+              <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Do you frequently read article or resources online only to come up blank 
+			  when trying to remember what you learned from them, if this constantly happens to you, then Repetil was developed just for 
+			  you to enable you remember important data, definitions, code-snippets, e.t.c, you will learn online from henceforth.</h6>
+			  <p class="mb-3 wow fadeInLeft" data-wow-delay="0.3s" style="display:none;" id="learn_more_text"> Repetil is an online learning companion installed 
+			  in your browser which utilizes spaced learning to help you remember key parts and portions of resources and articles you read.</p>
+              <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s" id="learn_more_button" onclick="displayText()">Learn more</a>
             </div>
             <!--Grid column-->
             <!--Grid column-->
-            <div class="col-md-6 col-xl-5 mb-4">
+            <div class="col-md-6 col-12 col-xl-5 mb-4">
               <!--Form-->
               <div class="card wow fadeInRight" data-wow-delay="0.3s">
                 <div class="card-body">
                   <!--Header-->
                   <div class="text-center">
                     <h3 class="white-text">
-                      <i class="fa fa-user white-text"></i> Join Our Beta List</h3>
+                       Request An Invite Now </h3>
                     <hr class="hr-light">
                   </div>
                   <!--Body-->
@@ -170,9 +210,9 @@
                     <label for="form4">Your password</label>
                   </div> -->
                   <div class="text-center mt-4">
-                    <button class="btn btn-indigo">Submit</button>
-                    <hr class="hr-light mb-3 mt-4">
-                    <div class="inline-ul text-center d-flex justify-content-center">
+                    <button class="btn btn-indigo" onclick="saveData()">Submit</button>
+                    <!-- <hr class="hr-light mb-3 mt-4"> -->
+                    <!-- <div class="inline-ul text-center d-flex justify-content-center">
                       <a class="p-2 m-2 tw-ic">
                         <i class="fa fa-twitter white-text"></i>
                       </a>
@@ -182,7 +222,7 @@
                       <a class="p-2 m-2 ins-ic">
                         <i class="fa fa-instagram white-text"> </i>
                       </a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -190,14 +230,20 @@
             </div>
             <!--Grid column-->
           </div>
+		  <div class=" white-text text-center">
+			&#9400; 2018 REPETIL. 
+          </div>
           <!--Grid row-->
         </div>
         <!-- Content -->
       </div>
       <!-- Mask & flexbox options-->
+	  
     </div>
     <!-- Full Page Intro -->
+	
   </header>
+  
   <!-- SCRIPTS -->
   <!-- JQuery -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
